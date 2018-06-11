@@ -2,5 +2,8 @@
 @import "scss/mixins-custom";
 @import "scss/bootstrap-custom";
 @import "scss/responsive-align";
-@import "../../node_modules/font-awesome/scss/font-awesome";
+@import 'fontawesome';
+@import 'fa-brands';
+@import 'fa-regular';
+@import 'fa-solid';
 @import "scss/theme/theme";
