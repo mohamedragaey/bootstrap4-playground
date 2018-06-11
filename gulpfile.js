@@ -1,4 +1,6 @@
 var gulp = require('gulp'),
+  babel = require('gulp-babel'),
+  del = require('del'),
   sass = require('gulp-sass'),
   notify = require('gulp-notify'),
   uglify = require('gulp-uglify'),
@@ -30,6 +32,10 @@ var config = {
     fonts: config.publicRootDir + '/fonts',
     img: config.publicRootDir + '/images'
   }
+
+gulp.task('clean', function () {
+  return del(['dist/css'])
+})
 
 gulp.task('sync-fonts', function () {
   return gulp.src(srcs.fonts + '/**/*', {base: srcs.fonts})
@@ -97,25 +103,8 @@ gulp.task('css', function () {
 })
 
 gulp.task('scripts', function () {
-  gulp.src([
-//## Include jQuery to your grouped JavaScript file if it is not already included within your page context.
-    config.npmDir + '/jquery/dist/jquery.js',
-    config.npmDir + '/popper.js/dist/umd/popper.js',
-//## Include needed Bootstrap component from following scripts
-    config.npmDir + '/bootstrap/js/dist/util.js',
-    config.npmDir + '/bootstrap/js/dist/collapse.js',
-    config.npmDir + '/bootstrap/js/dist/alert.js',
-    config.npmDir + '/bootstrap/js/dist/button.js',
-    config.npmDir + '/bootstrap/js/dist/carousel.js',
-    config.npmDir + '/bootstrap/js/dist/dropdown.js',
-    config.npmDir + '/bootstrap/js/dist/modal.js',
-    config.npmDir + '/bootstrap/js/dist/scrollspy.js',
-    config.npmDir + '/bootstrap/js/dist/tab.js',
-    config.npmDir + '/bootstrap/js/dist/tooltip.js',
-    config.npmDir + '/bootstrap/js/dist/popover.js',
-//## Include Custom Scripts
-    srcs.js + '/scripts.js'
-  ])
+  gulp.src(srcs.js + '/**/*.js')
+    .pipe(babel())
     .pipe(concat('app.js'))
     .pipe(gulp.dest(dests.js))
     .pipe(rename({suffix: '.min'}))
@@ -140,4 +129,4 @@ gulp.task('watch', function () {
   gulp.watch(srcs.js + '/**/*.js', ['standard'])
 })
 
-gulp.task('default', ['sync-fonts', 'sync-images', 'icons', 'css', 'browser-sync', 'scripts', 'standard', 'watch'])
+gulp.task('default', ['clean', 'sync-fonts', 'sync-images', 'icons', 'css', 'browser-sync', 'scripts', 'standard', 'watch'])
