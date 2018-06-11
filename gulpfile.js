@@ -38,6 +38,7 @@ gulp.task('css', function () {
     .pipe(sass({
       style: 'expanded',
       includePaths: [
+        config.npmDir + '/boostrap-multi-direction/src/scss',
         srcs.scss
       ]
     }).on('error', notify.onError(function (error) {
@@ -56,11 +57,10 @@ gulp.task('css', function () {
 })
 gulp.task('scripts', function () {
   gulp.src([
-//        ## Include jQuery to your grouped JavaScript file if it is not already included within your page context.
+//## Include jQuery to your grouped JavaScript file if it is not already included within your page context.
     config.npmDir + '/jquery/dist/jquery.js',
-    config.npmDir + '/popper',
-//
-//        ## Include needed Bootstrap component from following scripts
+    config.npmDir + '/popper.js/dist/umd/popper.js',
+//## Include needed Bootstrap component from following scripts
     config.npmDir + '/bootstrap/js/dist/util.js',
     config.npmDir + '/bootstrap/js/dist/collapse.js',
     config.npmDir + '/bootstrap/js/dist/alert.js',
@@ -68,11 +68,11 @@ gulp.task('scripts', function () {
     config.npmDir + '/bootstrap/js/dist/carousel.js',
     config.npmDir + '/bootstrap/js/dist/dropdown.js',
     config.npmDir + '/bootstrap/js/dist/modal.js',
-    config.npmDir + '/bootstrap/js/dist/popover.js',
     config.npmDir + '/bootstrap/js/dist/scrollspy.js',
     config.npmDir + '/bootstrap/js/dist/tab.js',
     config.npmDir + '/bootstrap/js/dist/tooltip.js',
-
+    config.npmDir + '/bootstrap/js/dist/popover.js',
+//## Include Custom Scripts
     srcs.js + '/scripts.js'
   ])
     .pipe(concat('app.js'))
@@ -89,4 +89,4 @@ gulp.task('watch', function () {
   gulp.watch(srcs.js + '/**/*.js', ['scripts'])
 })
 
-gulp.task('default', ['css', 'scripts', 'watch'])
+gulp.task('default', ['css', 'browser-sync', 'scripts', 'watch'])

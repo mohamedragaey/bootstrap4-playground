@@ -24,9 +24,9 @@
     "gulp-watch": "^4.3.5"
   },
   "dependencies": {
-    "boostrap-multi-direction": "^1.0.0",
+    "boostrap-multi-direction": "^2.0.4",
     "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",
-    "popper": "^1.0.1"
+    "popper.js": "^1.14.3"
   }
 }

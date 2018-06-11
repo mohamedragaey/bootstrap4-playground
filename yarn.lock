@@ -604,9 +604,9 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-boostrap-multi-direction@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/boostrap-multi-direction/-/boostrap-multi-direction-1.0.0.tgz#1e5ef5e098424fa8bca4a6ca565bdff66f52f796"
+boostrap-multi-direction@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/boostrap-multi-direction/-/boostrap-multi-direction-2.0.4.tgz#205cf6810efb850d5afb15a8213ae43aa71c33a4"
 
 bootstrap@^4.1.1:
   version "4.1.1"
@@ -4986,6 +4986,10 @@ plugin-error@^1.0.0, plugin-error@^1.0.1:
 pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
+
+popper.js@^1.14.3:
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
 
 popper@^1.0.1:
   version "1.0.1"

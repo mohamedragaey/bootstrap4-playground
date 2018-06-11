@@ -1,7 +1,4 @@
-bower_components
-!bower_components/.htaccess
-node_modules
-/public/dist
-/dist
-assets
-.idea
+/node_modules/*
+/public/dist/*
+/assets/*
+/.idea/*
