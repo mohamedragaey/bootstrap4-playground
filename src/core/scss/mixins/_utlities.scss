@@ -1,0 +1,66 @@
+@mixin pull-left {
+  float: $left !important;
+}
+@mixin pull-right {
+  float: $right !important;
+}
+@mixin v-align($position: absolute) {
+    position: $position;
+    top: 50%;
+    @include translate(0, -50%);
+}
+@mixin h-align($position: absolute) {
+    position: $position;
+    #{$default}: 50%;
+    @if $default == left{
+        @include translate(-50%, 0);
+    }@else{
+        @include translate(50%, 0);
+    }
+}
+@mixin c-align($position: absolute) {
+    position: $position;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+}
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+@mixin alpha-attribute($attribute, $color, $background) {
+    $percent: alpha($color) * 100%;
+    $opaque: opacify($color, 1);
+    $solid-color: mix($opaque, $background, $percent);
+    #{$attribute}: $solid-color;
+    #{$attribute}: $color;
+}
+@mixin grayscale_element($value) {
+    -webkit-filter: #{"grayscale(#{$value})"};
+    -moz-filter: #{"grayscale(#{$value})"};
+    filter:#{"grayscale(#{$value})"};
+}
+@mixin group-carousel($cols){
+    .carousel-inner{
+        > .item{
+            @include transition(.6s ease-in-out $default);
+        }
+        >.active {
+            #{$default}: 0;
+            #{$opposite}: auto;
+        }
+        >.active.left, >.prev { 
+            #{$default}: percentage(-100/$cols/100);
+            #{$opposite}: auto;
+        }
+        >.active.right, >.next { 
+            #{$default}: percentage(100/$cols/100);
+            #{$opposite}: auto;
+        }
+        >.next.left, >.prev.right{
+            #{$default}: 0;
+            #{$opposite}: auto;
+        }
+    }
+}

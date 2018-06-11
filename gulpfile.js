@@ -5,9 +5,13 @@ var gulp = require('gulp'),
   cssnano = require('gulp-cssnano'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
+  dirSync = require('gulp-directory-sync'),
   watch = require('gulp-watch'),
   sourcemaps = require('gulp-sourcemaps'),
+  imagemin = require('gulp-imagemin'),
+  pngquant = require('imagemin-pngquant'),
   autoprefixer = require('gulp-autoprefixer'),
+  standard = require('gulp-standard'),
   browserSync = require('browser-sync').create()
 
 var config = {
@@ -15,12 +19,45 @@ var config = {
     publicRootDir: './dist'
   },
   srcs = {
-    scss: './core',
-    js: './js'
+    scss: './src/core',
+    js: './src/js',
+    fonts: './src/fonts',
+    img: './src/images'
+
   }, dests = {
     css: config.publicRootDir + '/css',
-    js: config.publicRootDir + '/js'
+    js: config.publicRootDir + '/js',
+    fonts: config.publicRootDir + '/fonts',
+    img: config.publicRootDir + '/images'
   }
+
+gulp.task('sync-fonts', function () {
+  return gulp.src(srcs.fonts + '/**/*', {base: srcs.fonts})
+    .pipe(dirSync(srcs.fonts, dests.fonts, {printSummary: false, ignore: '.gitignore'}))
+    //.pipe(watch(srcs.fonts, {base: srcs.fonts}))
+    .pipe(gulp.dest(dests.fonts))
+    .on('error', notify.onError(function (error) {
+      return 'Error: ' + error.message
+    }))
+})
+
+gulp.task('sync-images', function () {
+  return gulp.src(srcs.img + '/**/*', {base: srcs.img})
+  //.pipe(watch(srcs.img, {base: srcs.img}))
+    .pipe(imagemin({
+      progressive: true,
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest(dests.img))
+    .pipe(dirSync(srcs.img, dests.img, {printSummary: false, ignore: '.gitignore'}))
+    .on('error', notify.onError(function (error) {
+      return 'Error: ' + error.message
+    }))
+})
+
+gulp.task('icons', function () {
+  return gulp.src(config.npmDir + '/@fortawesome/fontawesome-free-webfonts/webfonts/**.*').pipe(gulp.dest(dests.fonts))
+})
 
 gulp.task('browser-sync', ['css'], function () {
   browserSync.init({
@@ -38,8 +75,11 @@ gulp.task('css', function () {
     .pipe(sass({
       style: 'expanded',
       includePaths: [
+        srcs.scss,
         config.npmDir + '/boostrap-multi-direction/src/scss',
-        srcs.scss
+        config.npmDir + '/mappy-breakpoints',
+        config.npmDir + '/@fortawesome/fontawesome-free-webfonts/scss'
+
       ]
     }).on('error', notify.onError(function (error) {
       return 'Error: ' + error.message
@@ -55,6 +95,7 @@ gulp.task('css', function () {
     .pipe(gulp.dest(dests.css))
     .pipe(browserSync.stream())
 })
+
 gulp.task('scripts', function () {
   gulp.src([
 //## Include jQuery to your grouped JavaScript file if it is not already included within your page context.
@@ -84,9 +125,19 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(dests.js))
 })
 
+gulp.task('standard', function () {
+  return gulp.src(srcs.js + '/**/*.js')
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      breakOnError: true,
+      quiet: true
+    }))
+})
+
 gulp.task('watch', function () {
   gulp.watch(srcs.scss + '/**/*.scss', ['css'])
   gulp.watch(srcs.js + '/**/*.js', ['scripts'])
+  gulp.watch(srcs.js + '/**/*.js', ['standard'])
 })
 
-gulp.task('default', ['css', 'browser-sync', 'scripts', 'watch'])
+gulp.task('default', ['sync-fonts', 'sync-images', 'icons', 'css', 'browser-sync', 'scripts', 'standard', 'watch'])
