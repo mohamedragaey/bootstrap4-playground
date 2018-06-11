@@ -1,7 +1,6 @@
 {
   "name": "boostrap-multi-direction",
   "version": "1.0.0",
-  "main": "core/scss/bootstrap.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/mohamedragaey/bootstrap-scss-multi-dir.git"
