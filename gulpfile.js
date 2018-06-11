@@ -84,7 +84,7 @@ gulp.task('css', function () {
       style: 'expanded',
       includePaths: [
         srcs.scss,
-        config.npmDir + '/bootstrap-multi-direction/src/scss',
+        config.npmDir + '/bootstrap-multi-direction/scss',
         config.npmDir + '/mappy-breakpoints',
         config.npmDir + '/@fortawesome/fontawesome-free-webfonts/scss'
       ]

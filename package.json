@@ -28,8 +28,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.3",
+    "boostrap-multi-direction": "^2.0.5",
     "bootstrap": "^4.1.1",
-    "bootstrap-multi-direction": "^2.0.5",
+    "bootstrap-multi-direction": "^2.0.6",
     "jquery": "^3.3.1",
     "mappy-breakpoints": "^0.2.3",
     "popper.js": "^1.14.3"

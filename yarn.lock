@@ -502,9 +502,13 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap-multi-direction@^2.0.5:
+boostrap-multi-direction@^2.0.5:
   version "2.0.5"
-  resolved "https://registry.yarnpkg.com/bootstrap-multi-direction/-/bootstrap-multi-direction-2.0.5.tgz#d509bd7123b44e87c4a3a9bd5bc9385fac2febdf"
+  resolved "https://registry.yarnpkg.com/boostrap-multi-direction/-/boostrap-multi-direction-2.0.5.tgz#b4a73699047d38676d8d0b204d0a84c34613ef9c"
+
+bootstrap-multi-direction@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/bootstrap-multi-direction/-/bootstrap-multi-direction-2.0.6.tgz#cd365a2e12b6332e9fade8f78f06d604fd605aac"
 
 bootstrap@^4.1.1:
   version "4.1.1"
