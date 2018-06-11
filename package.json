@@ -1,5 +1,5 @@
 {
-  "name": "boostrap-multi-direction",
+  "name": "bootstrap-multi-direction",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
     "imagemin-pngquant": "^5.1.0"
   },
   "dependencies": {
-    "boostrap-multi-direction": "^2.0.4",
     "bootstrap": "^4.1.1",
+    "bootstrap-multi-direction": "^2.0.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "mappy-breakpoints": "^0.2.3",

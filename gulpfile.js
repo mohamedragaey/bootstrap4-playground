@@ -82,10 +82,9 @@ gulp.task('css', function () {
       style: 'expanded',
       includePaths: [
         srcs.scss,
-        config.npmDir + '/boostrap-multi-direction/src/scss',
+        config.npmDir + '/bootstrap-multi-direction/src/scss',
         config.npmDir + '/mappy-breakpoints',
         config.npmDir + '/@fortawesome/fontawesome-free-webfonts/scss'
-
       ]
     }).on('error', notify.onError(function (error) {
       return 'Error: ' + error.message

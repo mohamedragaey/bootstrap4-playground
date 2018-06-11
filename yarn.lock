@@ -1014,6 +1014,10 @@ boostrap-multi-direction@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/boostrap-multi-direction/-/boostrap-multi-direction-2.0.4.tgz#205cf6810efb850d5afb15a8213ae43aa71c33a4"
 
+bootstrap-multi-direction@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/bootstrap-multi-direction/-/bootstrap-multi-direction-2.0.5.tgz#d509bd7123b44e87c4a3a9bd5bc9385fac2febdf"
+
 bootstrap@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
