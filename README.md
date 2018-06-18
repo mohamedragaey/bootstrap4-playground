@@ -1,10 +1,10 @@
 # Bootstrap4-playground
 
-installation 
+## installation 
 Run yarn command to insall the packages 
 `yarn`
 
-# Usage 
+## Usage 
 Run the gulp using the command 
 `gulp`
 
